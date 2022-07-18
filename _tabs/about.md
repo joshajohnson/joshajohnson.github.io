@@ -1,8 +1,13 @@
 ---
 title: About
 icon: fas fa-info-circle
-order: 4
+order: 3
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+Hi! I'm Josh, a compulsive project starter and occasional project finisher. 
+
+When I'm not at my day job designing pool and spa equipment, I can be found at home working on projects spanning keyboards, FPGAs, Car / CAN hacking, low cost RF, and educational talks and workshops. 
+
+I can also be found out on the local mountain bike tracks trying to stay upright, with mixed success.
+
+If you have any questions about anything I've worked on, or want to enquire about consulting availability, please [get in touch](mailto:contact@joshajohnson.com).
