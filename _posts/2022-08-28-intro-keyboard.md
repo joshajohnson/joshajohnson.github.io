@@ -44,6 +44,7 @@ The most important thing to remember with soldering is that the solder flows to 
 
 Here is a short video showing how to solder, with the first 15 seconds demoing the above instructions.
 {% include youtube_embed.html id="BsF9A7xBRP0" %}
+{% include youtube_embed.html id="uSRfHFco2eg" %}
 
 ### Reset Switch
 
@@ -287,13 +288,13 @@ If you have issues, check the diodes are installed in the correct orientation an
 
 Assuming everything is working, you can now play around with configuring the keyboard to send whatever keycodes you want. Below are a few links to KMK documentation to help guide you.
 
-- There's a [reference](keycodes.md) of the available keycodes.
-- [International](international.md) extension adds keys for non US layouts and [Media Keys](media_keys.md) adds keys for ... media.
+- There's a [reference](https://github.com/KMKfw/kmk_firmware/blob/master/docs/keycodes.md#keys-overview) of the available keycodes.
+- [International](https://github.com/KMKfw/kmk_firmware/blob/master/docs/international.md#international-keycodes) extension adds keys for non US layouts and [Media Keys](https://github.com/KMKfw/kmk_firmware/blob/master/docs/media_keys.md#media-keys) adds keys for ... media.
 
 And to go even further:
-- [Sequences](sequences.md) are used for sending multiple keystrokes in a single action.
-- [Layers](layers.md) can transform the whole way your keyboard is behaving with a single touch.
-- [ModTap](modtap.md) allow you to customize the way a key behaves whether it is tapped or hold, and [TapDance](tapdance.md) depending on the number of times it is pressed.
+- [Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#sequences) are used for sending multiple keystrokes in a single action.
+- [Layers](https://github.com/KMKfw/kmk_firmware/blob/master/docs/layers.md#layers) can transform the whole way your keyboard is behaving with a single touch.
+- [ModTap](https://github.com/KMKfw/kmk_firmware/blob/master/docs/modtap.md#modtap-keycodes) allow you to customize the way a key behaves whether it is tapped or hold, and [TapDance](https://github.com/KMKfw/kmk_firmware/blob/master/docs/tapdance.md#tap-dance) depending on the number of times it is pressed.
 
 If you make a change and notice your board is no longer working, there is a good chance there is a bug somewhere that is preventing the code from running. If this is the case, the onboard RGB LED will blink a [error code](https://learn.adafruit.com/welcome-to-circuitpython/troubleshooting#circuitpython-7-dot-0-0-and-later-2978455) that corresponds to the below.
 
