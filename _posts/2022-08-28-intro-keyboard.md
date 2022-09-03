@@ -44,7 +44,6 @@ The most important thing to remember with soldering is that the solder flows to 
 
 Here is a short video showing how to solder, with the first 15 seconds demoing the above instructions.
 {% include youtube_embed.html id="BsF9A7xBRP0" %}
-{% include youtube_embed.html id="uSRfHFco2eg" %}
 
 ### Reset Switch
 
