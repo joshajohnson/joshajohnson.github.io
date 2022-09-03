@@ -42,6 +42,9 @@ You will also require the following tools.
 
 The most important thing to remember with soldering is that the solder flows to wherever is hot. As such it's important to heat up the components you are trying to solder before feeding solder into the joint. A rough rule of thumb is to hold your iron against the components for a second before feeding solder **into the component being soldered, not the iron**. This will ensure the solder sticks to the parts you are trying to attach to the circuit board, and not just pool up on the iron.
 
+Here is a short video showing how to solder, with the first 15 seconds demoing the above instructions.
+{% include youtube_embed.html id="BsF9A7xBRP0" %}
+
 ### Reset Switch
 
 The first step to assembling the board is to solder the reset switch, which is commonly used to put the board into bootloader mode so you can flash different firmware / keymaps to the microcontroller. The board we are using ([Sea-Picro]({% post_url 2022-08-03-sea-picro %})) already has a reset button on it so this step is not required, but is good practice none the less.
