@@ -137,7 +137,9 @@ With the headers tacked in place, confirm the pins are square to the microcontro
 Once the pins are square solder all of the pins. (sorry for the blurry photo)
 ![solder all pins](30_solder_headers.png)
 
-With all the pins soldered on Sea-Picro, flip the board upside down and tack two opposing corners in place on the PCB.
+With all the pins soldered on Sea-Picro, ensure it's placed on the same side as the diodes with the USB connector facing towards the edge of PCB as per the above photo. **ENSURE THIS IS CORRECT OTHERWISE YOUR BOARD WILL NOT WORK**.
+
+With Sea-Picro oriented correctly, flip the board upside down and tack two opposing corners in place on the PCB.
 ![tack bottom pins](31_solder_headers_bottom.png)
 
 If Sea-Picro isn't sitting fush to the PCB, heat up a pin and adjust as nessessary.
@@ -173,36 +175,6 @@ With the pins tacked into place, ensure the encoder is sitting flush / square on
 
 With all of the encoder pins soldered, install the keycaps and knob, and celebrate finishing the soldering of your new keyboard!
 ![elec done](41_final_product.jpg)
-
-## Mechanical Assembly
-
-With the electronics done, it's time to assemble the case. Check you have the below before continuing.
-
-- 1 x Acrylic base
-- 4 x M2 standoffs
-- 8 x M2 bolts
-- 4 x Bumpons
-- 1.5mm hex/allen key
-
-![mech parts](42_mech_required.jpg)
-
-Start by removing the protective paper off the acrylic base.
-![remove paper](43_peel.jpg)
-
-Grab a screw and standoff, and screw into one of the holes in the acrylic.
-![install standoff](44_thread_standoff.jpg)
-
-Repeat for all four corners.
-![all corners](45_all_installed.jpg)
-
-Using a 1.5mm allen key, screw the PCB to the standoffs with the remaining screws.
-![top screw install](46_top_screws.jpg)
-
-Finally, add the bumpons to four corners of the acrylic.
-![add bumpons](47_add_feed.jpg)
-
-Now it's time to sit back and enjoy all of your hard work, as you've successfully assembled your new keyboard and can begin programming it.
-![assembled unit](48_final_product.jpg)
 
 ## Firmware Configuration
 
@@ -285,7 +257,7 @@ Press the keys / turn the encoder on your keyboard and see if they all work. By 
 
 If you have issues, check the diodes are installed in the correct orientation and all pins are soldered. Just incase you have issues with the diodes, there is a "no diode" IO configuration on line 21 that can be commented in to check if the diodes are the issue or if it exists somewhere else.
 
-Assuming everything is working, you can now play around with configuring the keyboard to send whatever keycodes you want. Below are a few links to KMK documentation to help guide you.
+Assuming everything is working, it's time to jump to [mechanical assembly](#mechanical-assembly) and attach the base before returning here to configure the keyboard to send whatever keycodes you want. Below are a few links to KMK documentation to help guide you.
 
 - There's a [reference](https://github.com/KMKfw/kmk_firmware/blob/master/docs/keycodes.md#keys-overview) of the available keycodes.
 - [International](https://github.com/KMKfw/kmk_firmware/blob/master/docs/international.md#international-keycodes) extension adds keys for non US layouts and [Media Keys](https://github.com/KMKfw/kmk_firmware/blob/master/docs/media_keys.md#media-keys) adds keys for ... media.
@@ -303,6 +275,36 @@ If you make a change and notice your board is no longer working, there is a good
 - 3 YELLOW blinks: CircuitPython is in safe mode. No user code was run. Check the serial console for safe mode reason.
 
 To check the serial console for details, you will need a tool like [PuTTY](https://putty.org/), or [Screen](https://linux.die.net/man/1/screen). You can also use [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recomended editor for CircuitPython and has an inbuilt serial terminal.
+
+## Mechanical Assembly
+
+With the electronics done, it's time to assemble the case. Check you have the below before continuing.
+
+- 1 x Acrylic base
+- 4 x M2 standoffs
+- 8 x M2 bolts
+- 4 x Bumpons
+- 1.5mm hex/allen key
+
+![mech parts](42_mech_required.jpg)
+
+Start by removing the protective paper off the acrylic base.
+![remove paper](43_peel.jpg)
+
+Grab a screw and standoff, and screw into one of the holes in the acrylic.
+![install standoff](44_thread_standoff.jpg)
+
+Repeat for all four corners.
+![all corners](45_all_installed.jpg)
+
+Using a 1.5mm allen key, screw the PCB to the standoffs with the remaining screws.
+![top screw install](46_top_screws.jpg)
+
+Finally, add the bumpons to four corners of the acrylic.
+![add bumpons](47_add_feed.jpg)
+
+Now it's time to sit back and enjoy all of your hard work, as you've successfully assembled your new keyboard and can begin programming it.
+![assembled unit](48_final_product.jpg)
 
 ## The End
 
