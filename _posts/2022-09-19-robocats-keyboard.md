@@ -18,14 +18,16 @@ The goal of today's workshop is to provide an introduction to soldering and prog
 
 We will be using the below components during today's workshop, and will be handed out as you get to each step.
 
-- 1 x Sea-Picro
-- 1 x PCB
-- 2 x 12 pin headers
-- 4 x Diodes (through hole or surface mount)
-- 3 x Keyswitches and keycaps
-- 1 x Rotary encoder and knob
+- 1 x Sea-Picro (1)
+- 1 x PCB (2)
+- 2 x 12 pin headers (3)
+- 4 x Diodes (through hole (4) or surface mount (5))
+- 3 x Keyswitches (6) and keycaps (7)
+- 1 x Rotary encoder (8) and knob (9)
 
-![required parts](0_parts_required.jpg)
+The LEDs (10) will be pre soldered, and the reset switch (11) is not required.
+
+![required parts](0_parts_required_robocats.jpg)
 
 You will also require the following tools.
 
@@ -70,7 +72,7 @@ Finally, trim the leads using the flush cut side cutters. Please point the side 
 
 ### Surface Mount Diodes
 
-Like through hole diodes, surface mount diodes are directional and won't work if installed backwards. They have a horizonal line on one end of the package which lines up with the line on the PCB. This can sometimes be hard to see, but shining light from the side of the package will help reveal the marking.
+Like through hole diodes, surface mount diodes are directional and won't work if installed backwards. They have a horizontal line on one end of the package which lines up with the line on the PCB. This can sometimes be hard to see, but shining light from the side of the package will help reveal the marking.
 ![diode marking](20_smd_diode_align.jpg)
 
 As we have done previously, add solder to one pad.
@@ -79,7 +81,7 @@ As we have done previously, add solder to one pad.
 Then ensuring the component is in the correct orientation, tack one pin in place.
 ![tack one end](22_smd_diode_tack.jpg)
 
-Then solder the reminaing pin in place.
+Then solder the remaining pin in place.
 ![solder final pin](23_smd_diode_solder.jpg)
 
 Finish soldering all four diodes, and you'll have a board that looks like the below. (You can pick and choose through hole vs surface mount depending on how much of a challenge you are seeking.)
@@ -105,7 +107,7 @@ With all the pins soldered on Sea-Picro, ensure it's placed on the same side as 
 With Sea-Picro oriented correctly, flip the board upside down and tack two opposing corners in place on the PCB.
 ![tack bottom pins](31_solder_headers_bottom.png)
 
-If Sea-Picro isn't sitting fush to the PCB, heat up a pin and adjust as nessessary.
+If Sea-Picro isn't sitting flush to the PCB, heat up a pin and adjust as necessary.
 ![align pins](31_5_aligning_pins.png)
 
 With the microcontroller sitting flush to the PCB, solder the remaining pins. (forgot to photograph this step)
@@ -115,9 +117,9 @@ With all the pins soldered, snip off the legs so they don't stick out. Please ta
 
 ### Switches
 
-Switches are argueably the most important part of a keyboard, as without them you wouldn't be able to type anything! They come in a variety of options with different force profiles, but regardless of what switch you pick the install process is the same.
+Switches are arguably the most important part of a keyboard, as without them you wouldn't be able to type anything! They come in a variety of options with different force profiles, but regardless of what switch you pick the install process is the same.
 
-First, grab a switch and place it in the position you want. Rememeber we are fitting a rotary encoder as well so consider where you want that to live as it's much taller than a switch. In this case, I'm installing switches in 1,2,3, and an encoder in 0.
+First, grab a switch and place it in the position you want. Remember we are fitting a rotary encoder as well so consider where you want that to live as it's much taller than a switch. In this case, I'm installing switches in 1,2,3, and an encoder in 0.
 ![place switch](35_insert_switch.jpg)
 
 With the switch pressed into place, flip the board over and solder the pins in. Repeat for the other two switches.
@@ -133,7 +135,7 @@ The first step is to snip both mounting legs off the encoder with the side cutte
 With the legs removed, insert the encoder into the PCB and tack opposing pins in place. Don't solder all the pins yet.
 ![solder two pins](40_tack_pins.jpg)
 
-With the pins tacked into place, ensure the encoder is sitting flush / square on the board, and adjust as nessessary. When square, solder the remaining pins.
+With the pins tacked into place, ensure the encoder is sitting flush / square on the board, and adjust as necessary. When square, solder the remaining pins.
 ![check square](40_5_check_square.jpg)
 
 With all of the encoder pins soldered, install the keycaps and knob, and celebrate finishing the soldering of your new keyboard!
@@ -143,7 +145,7 @@ With all of the encoder pins soldered, install the keycaps and knob, and celebra
 
 Out of the box, Sea-Picro (and the RP2040 microcontroller within) has no idea what it's purpose in life is, so we need to configure it to not only be a keyboard, but one which works with our custom made PCB, and your custom keycodes. To do this, we will be using [KMK](http://kmkfw.io/docs/Getting_Started/), a [CircuitPython](https://www.adafruit.com/circuitpython) based keyboard firmware framework, due to it's ease of programming - all you need to do it edit a text file and when you save the code it will run.
 
-To make programming easier, please install [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recomended editor for CircuitPython and has an inbuilt serial terminal which allows us to talk to your keyboard for debugging purposes.
+To make programming easier, please install [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recommended editor for CircuitPython and has an inbuilt serial terminal which allows us to talk to your keyboard for debugging purposes.
 
 Sea-Picro comes flashed with CircuitPython out of the box, but we need to load KMK and the `code.py` file with our keyboard configuration. The steps are below:
 
@@ -167,6 +169,7 @@ from kmk.keys import KC
 from kmk.extensions.media_keys import MediaKeys
 from kmk.handlers.sequences import send_string
 from kmk.handlers.sequences import unicode_string_sequence
+from kmk.handlers.sequences import simple_key_sequence
 
 # Init keyboard
 keyboard = KMKKeyboard()
@@ -192,7 +195,7 @@ encoder_handler.pins = ((board.D9, board.D8, None, False),)
 # Strings: https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#sending-strings
 EG_STRING = send_string("According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground.")
 # Unicode (requires config on your PC first) https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#unicode
-EG_FLIP = unicode_string_sequence('(っ◔◡◔)っ ❤')
+EG_UNICODE = unicode_string_sequence('(っ◔◡◔)っ ❤')
 # Chains of key presses
 EG_COPY = KC.LCTL(KC.C)
 EG_PASTE = KC.LCTL(KC.V)
@@ -220,7 +223,7 @@ Press the keys / turn the encoder on your keyboard and see if they all work. By 
 - Encoder Clockwise: Volume Up
 - Encoder Anticlockwise: Volume Down
 
-If you have issues, check the diodes are installed in the correct orientation and all pins are soldered. Just incase you have issues with the diodes, there is a "no diode" IO configuration on line 21 that can be commented in to check if the diodes are the issue or if it exists somewhere else.
+If you have issues, check the diodes are installed in the correct orientation and all pins are soldered. Just incase you have issues with the diodes, there is a "no diode" IO configuration on line 22 that can be commented in to check if the diodes are the issue or if it exists somewhere else.
 
 Assuming everything is working, it's time to jump to [mechanical assembly](#mechanical-assembly) and attach the base before returning here to configure the keyboard to send whatever keycodes you want. Below are a few links to KMK documentation to help guide you.
 
@@ -231,6 +234,7 @@ And to go even further:
 - [Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#sequences) are used for sending multiple keystrokes in a single action.
 - [Layers](https://github.com/KMKfw/kmk_firmware/blob/master/docs/layers.md#layers) can transform the whole way your keyboard is behaving with a single touch.
 - [ModTap](https://github.com/KMKfw/kmk_firmware/blob/master/docs/modtap.md#modtap-keycodes) allow you to customize the way a key behaves whether it is tapped or hold, and [TapDance](https://github.com/KMKfw/kmk_firmware/blob/master/docs/tapdance.md#tap-dance) depending on the number of times it is pressed.
+- [RGB](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes) allows you to control addressable LEDs.
 
 If you make a change and notice your board is no longer working, there is a good chance there is a bug somewhere that is preventing the code from running. If this is the case, the onboard RGB LED will blink a [error code](https://learn.adafruit.com/welcome-to-circuitpython/troubleshooting#circuitpython-7-dot-0-0-and-later-2978455) that corresponds to the below.
 
@@ -269,16 +273,20 @@ Finally, add the bumpons to four corners of the acrylic.
 Now it's time to sit back and enjoy all of your hard work, as you've successfully assembled your new keyboard and can begin programming it.
 ![assembled unit](48_final_product.jpg)
 
-## Programaming Challenges
+## Programming Challenges
 
 With all the above done, you should have a fully functioning keyboard whose function is only limited by your imagination (and the rules of physics). If there is time left in the workshop, please play around with the code and configure it's functionality to things you find interesting. 
 
 If you'd like some ideas, give the below a go:
 
-- Configure each key to change the colour of the RGB LEDs.
-- Set the encoder to change the LED brightness when you turn it.
-- Print the below ASCII art of Shrek with a single key press.
-```txt
+- Configure keys to change the colour of the RGB LEDs. [Hint](#hint-change-colour-rgb), [Answer](#answer-change-colour-rgb).
+- Set the encoder to change the LED brightness when you turn it. [Hint](#hint-brightness-change-encoder), [Answer](#answer-brightness-change-encoder).
+- Configure one key to press `CTRL + L`, another to type the RoboCats website URL, and a third to press enter, allowing you to visit the RoboCats website quickly (when pressed within a web browser). [Hint](#hint-visit-robocats-website), [Answer](#answer-visit-robocats-website).
+- Combine the above into a single key press. [Hint](#hint-robocats-website-single-key), [Answer](#answer-robocats-website-single-key).
+- Write a function that types `3`, waits a second, `2`, waits a second, `1`, waits a second, then types `Liftoff!`. [Hint](#hint-3-2-1-liftoff), [Answer](#answer-3-2-1-liftoff).
+- Use a tool such as [TextKool](https://textkool.com/en/ascii-art-generator) to generate fancy `RoboCats` text and type it with one key press. [Hint](#hint-fancy-robocats-text), [Answer](#answer-fancy-robocats-text).
+- Print the below ASCII art of Shrek to the Mu serial terminal with a single key press. [Hint](#hint-shrek-print), [Answer](#answer-shrek-print).
+```
 ⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀
@@ -293,9 +301,224 @@ If you'd like some ideas, give the below a go:
 ⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉')
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉
 ```
-- Use a tool such as [TextKool](https://textkool.com/en/ascii-art-generator) to genrate fancy `RoboCats` text and type that as a multi line ASCII sequence.
-- Configure one key to press `CTRL + L` and another to type the RoboCats website URL, allowing you the visits the RoboCats website with two key presses (when pressed within a web browser).
-- For a challenge, combine the above into a single key press.
-- Write a function that types `3`, waits a second, `2`, waits a second, `1`, waits a second, then types `Liftoff!`.
+
+## Hints
+
+### Hint: Change Colour RGB
+
+- Check out the [RGB Key Codes](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes).
+- You'll need to put the board into plain mode, then use Hue to adjust the colour. This can be done by altering the keymap.
+
+### Hint: Brightness Change Encoder
+
+- This is very similar to the colour change problem above, except you want to change the brightness (Value) and map those keycodes to the encoder.
+
+### Hint: Visit RoboCats Website
+
+- In the example code we have this keycode `EG_COPY = KC.LCTL(KC.C)`, which presses `CTRL + C` to copy.
+- Try modifying this to press `CTRL + L` instead, and update the name from `EG_COPY` to something more relevant.
+- Then try modifying the `send_string` example to print the RoboCats URL `https://www.melbournerobocats.com/` instead of the Bee Movie script.
+- You might notice that after the string is pressed we need to press enter, so add that to your keymap as well.
+
+### Hint: RoboCats Website Single Key
+
+- We will use [Key Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#key-sequences) to press keys in sequence.
+- Look at the example `simple_key_presses` at the above link and modify it to use the keycodes we made earlier.
+- You'll need to define this sequence below the keycodes you want to use.
+
+
+### Hint: 3 2 1 Liftoff!
+
+- We can use the `simple_key_presses` per the previous challenge, but will need to add `KC.MACRO_SLEEP_MS(1000)` in between steps to delay by 1 second.
+- To make the text appear on a new line each time, you can either use `KC.ENTER` as a keycode, or add a newline `\n` to the end of a string.
+
+### Hint: Fancy RoboCats Text
+
+- As we've seen in the previous challenge, we can use `send_string` in a sequence to print multiple lines of text.
+- We need to ensure we only use a font that uses standard keycodes, for example the one I've generated below:
+```
+ _____   ____  ____   ____   _____       _______ _____ 
+|  __ \ / __ \|  _ \ / __ \ / ____|   /\|__   __/ ____|
+| |__) | |  | | |_) | |  | | |       /  \  | | | (___  
+|  _  /| |  | |  _ <| |  | | |      / /\ \ | |  \___ \ 
+| | \ \| |__| | |_) | |__| | |____ / ____ \| |  ____) |
+|_|  \_\\____/|____/ \____/ \_____/_/    \_\_| |_____/ 
+```
+- If we copy and paste each line of the above text into a separate `send_string` command, we should be able to print the text one line at a time.
+- We'll either need to add a newline `\n` or `KC.ENTER` at the end of each string to ensure it prints on multiple lines.
+
+### Hint: Shrek Print
+
+- This problem is a challenging one, as the picture of Shrek uses characters that you can't type on a keyboard, so we can't send keycodes as we've done above.
+- We can however send it over the serial terminal to Mu, where we can then copy and paste it to a text editor on your PC.
+- The KMK developers have this as an example, so scroll to the bottom of [this page](https://github.com/KMKfw/kmk_firmware/blob/master/docs/keys.md) and give it a go.
+- You'll need to open the Mu serial terminal to see the work of art be printed out.
+
+## Answers
+
+### Answer: Change Colour RGB
+
+- We will use the [RGB Key Codes](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes) to adjust the LEDs.
+- Once we find the keycodes we want to use, we can update the keymap with the new codes.
+- `KC.RGB_MODE_PLAIN` will be used to change the animation mode from rainbow to plain, as otherwise the Value codes are not acted upon.
+- KMK uses HSV (Hue, Saturation, Value) for colour control, and Hue is how we adjust colour. Add the `KC.HUI` (Hue Increase) and `KC.HUD` (Hue Decrease) keycodes into the keymap.
+- With the keymap updated (see below), tap the `PLAIN` key, then you can use the `HUI` and `HUD` keys to adjust the colour.
+
+```python
+keyboard.keymap = [
+    [
+        KC.MPLY, KC.RGB_MODE_PLAIN, KC.RGB_HUI, KC.RGB_HUD
+    ]
+]
+
+```
+
+### Answer: Brightness Change Encoder
+
+- As above, we will use the [RGB Key Codes](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes), but update the encoder keymap instead of the keyboard switch keymap.
+- Value is the HSV equivalent of Brightness, so `KC.RGB_VAI` and `KC.RGB_VAD` are the keycodes we will use.
+- Updating the encoder keymap with these for clockwise / anticlockwise as shown below should get us the desired result.
+- If the value increases when you turn anticlockwise (and you want it to decrease), swap the location of the two keycodes.
+
+```python
+encoder_handler.map = (((KC.RGB_VAD, KC.RGB_VAI, None),),)
+```
+
+### Answer: Visit RoboCats Website
+
+- We can copy and paste the `EG_COPY = KC.LCTL(KC.C)` line to `URL = KC.LCTL(KC.L)`, which will go to the URL bar in your browser.
+- Similarly, copy and pasting the string example `EG_STRING = send_string("According ...")` to `ROBO_URL = send_string("https://www.melbournerobocats.com/")` will type out the URL.
+- We then need to add `KC.ENTER` to our keymap so we can press enter after typing out the URL.
+
+```python
+URL = KC.LCTL(KC.L)
+ROBO_URL = send_string("https://www.melbournerobocats.com/")
+
+# This is where we control what keys are sent when a switch is pressed
+keyboard.keymap = [
+    [
+        KC.MPLY, URL, ROBO_URL, KC.ENTER
+    ]
+]
+```
+
+### Answer: RoboCats Website Single Key
+
+- Using [Key Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#key-sequences) we can press the keys we defined in the last challenge together.
+- If we enter the keycodes we made in the previous challenge into the example linked above, it will look something like the below.
+- Adding `ROBO_URL_SINGLE` to our keymap will then allow us to trigger this sequence.
+
+```python
+URL = KC.LCTL(KC.L)
+ROBO_URL = send_string("https://www.melbournerobocats.com/")
+
+ROBO_URL_SINGLE = simple_key_sequence(
+    (
+        URL,
+        ROBO_URL,
+        KC.ENTER,
+    )
+)
+
+# This is where we control what keys are sent when a switch is pressed
+keyboard.keymap = [
+    [
+        ROBO_URL_SINGLE, URL, ROBO_URL, KC.ENTER
+    ]
+]
+```
+
+### Answer: 3 2 1 Liftoff!
+
+- We will use [Key Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#key-sequences) as we did in the previous challenge to solve this.
+- You can either type `1 2 3` using the keycodes, or send them as a string, but will need to type `Liftoff!` as a string.
+- We will press `KC.ENTER` after typing each key, and append a newline to the `Liftoff!` string.
+- Between each step `KC.MACRO_SLEEP_MS(1000)` will be called to create a delay. The function accepts a time in milliseconds (thousands of a second) so we will pass 1000 to get a delay in seconds.
+
+```python
+LIFTOFF = simple_key_sequence(
+    (
+        KC.N3,
+        KC.ENTER,
+        KC.MACRO_SLEEP_MS(1000),
+        KC.N2,
+        KC.ENTER,
+        KC.MACRO_SLEEP_MS(1000),
+        send_string("1\n"),
+        KC.MACRO_SLEEP_MS(1000),
+        send_string("LIFTOFF!\n"),
+    )
+)
+
+# This is where we control what keys are sent when a switch is pressed
+keyboard.keymap = [
+    [
+        LIFTOFF, URL, ROBO_URL, KC.ENTER
+    ]
+]
+```
+
+### Answer: Fancy RoboCats Text
+
+- As explained in the hint, we will use multiple `send_string` functions to print each line of the text.
+- We need to append a `\n` or `KC.ENTER` to the end of each line to ensure they print on a new line each time.
+- One possible solution is shown below.
+
+```python
+FANCY_ROBO = simple_key_sequence(
+    (
+        send_string(" _____   ____  ____   ____   _____       _______ _____ \n"),
+        send_string("|  __ \ / __ \|  _ \ / __ \ / ____|   /\|__   __/ ____|\n"),
+        send_string("| |__) | |  | | |_) | |  | | |       /  \  | | | (___  \n"),
+        send_string("|  _  /| |  | |  _ <| |  | | |      / /\ \ | |  \___ \ \n"),
+        send_string("| | \ \| |__| | |_) | |__| | |____ / ____ \| |  ____) |\n"),
+        send_string("|_|  \_\\____/|____/ \____/ \_____/_/    \_\_| |_____/ \n"),
+    )
+)
+
+# This is where we control what keys are sent when a switch is pressed
+keyboard.keymap = [
+    [
+        FANCY_ROBO, URL, ROBO_URL, KC.ENTER
+    ]
+]
+```
+
+### Answer: Shrek Print
+
+- First, we copy and paste the example code from the [KMK example](https://github.com/KMKfw/kmk_firmware/blob/master/docs/keys.md) to our code. Place above the keymap.
+- Looking at the code, we can see when we press `LALT` it will call the `shrek` function that prints the image.
+- As such, if we add the `KC.LALT` keycode to our keymap, it should print Shrek whenever Left Alt is pressed.
+- We then need to open Mu and go to the serial terminal to see the picture be printed.
+- Once it's been printed, you can copy and paste it in whatever text editor / messaging platform you like.
+
+```python
+def shrek(*args, **kwargs):
+    print('⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠸⡇⠀⠿⡀⠀⠀⠀⣀⡴⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠑⢄⣠⠾⠁⣀⣄⡈⠙⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⢀⡀⠁⠀⠀⠈⠙⠛⠂⠈⣿⣿⣿⣿⣿⠿⡿⢿⣆⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⢀⡾⣁⣀⠀⠴⠂⠙⣗⡀⠀⢻⣿⣿⠭⢤⣴⣦⣤⣹⠀⠀⠀⢀⢴⣶⣆')
+    print('⠀⠀⢀⣾⣿⣿⣿⣷⣮⣽⣾⣿⣥⣴⣿⣿⡿⢂⠔⢚⡿⢿⣿⣦⣴⣾⠁⠸⣼⡿')
+    print('⠀⢀⡞⠁⠙⠻⠿⠟⠉⠀⠛⢹⣿⣿⣿⣿⣿⣌⢤⣼⣿⣾⣿⡟⠉⠀⠀⠀⠀⠀')
+    print('⠀⣾⣷⣶⠇⠀⠀⣤⣄⣀⡀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀')
+    print('⠀⠉⠈⠉⠀⠀⢦⡈⢻⣿⣿⣿⣶⣶⣶⣶⣤⣽⡹⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⠀⠉⠲⣽⡻⢿⣿⣿⣿⣿⣿⣿⣷⣜⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣷⣶⣮⣭⣽⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀')
+    print('⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⠿⠿⠿⠿⠛⠉')
+
+    return False # Returning True will follow thru the normal handlers sending the ALT key to the OS
+KC.LALT.before_press_handler(shrek)
+
+# This is where we control what keys are sent when a switch is pressed
+keyboard.keymap = [
+    [
+        KC.LALT, KC.RGB_MODE_PLAIN, KC.RGB_HUI, KC.RGB_HUD
+    ]
+]
+```
