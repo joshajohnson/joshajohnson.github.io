@@ -280,7 +280,7 @@ With all the above done, you should have a fully functioning keyboard whose func
 If you'd like some ideas, give the below a go:
 
 - Configure keys to change the colour of the RGB LEDs. [Hint](#hint-change-colour-rgb), [Answer](#answer-change-colour-rgb).
-- Set the encoder to change the LED brightness when you turn it. [Hint](#hint-brightness-change-encoder), [Answer](#answer-brightness-change-encoder).
+- Set the encoder to change the LED brightness when you turn it. [Hint](#hint-encoder-brightness-change), [Answer](#answer-encoder-brightness-change).
 - Configure one key to press `CTRL + L`, another to type the RoboCats website URL, and a third to press enter, allowing you to visit the RoboCats website quickly (when pressed within a web browser). [Hint](#hint-visit-robocats-website), [Answer](#answer-visit-robocats-website).
 - Combine the above into a single key press. [Hint](#hint-robocats-website-single-key), [Answer](#answer-robocats-website-single-key).
 - Write a function that types `3`, waits a second, `2`, waits a second, `1`, waits a second, then types `Liftoff!`. [Hint](#hint-3-2-1-liftoff), [Answer](#answer-3-2-1-liftoff).
@@ -311,7 +311,7 @@ If you'd like some ideas, give the below a go:
 - Check out the [RGB Key Codes](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes).
 - You'll need to put the board into plain mode, then use Hue to adjust the colour. This can be done by altering the keymap.
 
-### Hint: Brightness Change Encoder
+### Hint: Encoder Brightness Change
 
 - This is very similar to the colour change problem above, except you want to change the brightness (Value) and map those keycodes to the encoder.
 
@@ -319,8 +319,8 @@ If you'd like some ideas, give the below a go:
 
 - In the example code we have this keycode `EG_COPY = KC.LCTL(KC.C)`, which presses `CTRL + C` to copy.
 - Try modifying this to press `CTRL + L` instead, and update the name from `EG_COPY` to something more relevant.
-- Then try modifying the `send_string` example to print the RoboCats URL `https://www.melbournerobocats.com/` instead of the Bee Movie script.
-- You might notice that after the string is pressed we need to press enter, so add that to your keymap as well.
+- Then try modifying the `send_string` example to print the RoboCats URL `https://www.melbournerobocats.com/`.
+- You might notice that after the URL is typed we need to press enter, so add that to your keymap as well.
 
 ### Hint: RoboCats Website Single Key
 
@@ -362,7 +362,7 @@ If you'd like some ideas, give the below a go:
 
 - We will use the [RGB Key Codes](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes) to adjust the LEDs.
 - Once we find the keycodes we want to use, we can update the keymap with the new codes.
-- `KC.RGB_MODE_PLAIN` will be used to change the animation mode from rainbow to plain, as otherwise the Value codes are not acted upon.
+- `KC.RGB_MODE_PLAIN` will be used to change the animation mode from rainbow to plain, as otherwise the Hue codes are not acted upon.
 - KMK uses HSV (Hue, Saturation, Value) for colour control, and Hue is how we adjust colour. Add the `KC.HUI` (Hue Increase) and `KC.HUD` (Hue Decrease) keycodes into the keymap.
 - With the keymap updated (see below), tap the `PLAIN` key, then you can use the `HUI` and `HUD` keys to adjust the colour.
 
@@ -375,7 +375,7 @@ keyboard.keymap = [
 
 ```
 
-### Answer: Brightness Change Encoder
+### Answer: Encoder Brightness Change
 
 - As above, we will use the [RGB Key Codes](https://github.com/KMKfw/kmk_firmware/blob/master/docs/rgb.md#keycodes), but update the encoder keymap instead of the keyboard switch keymap.
 - Value is the HSV equivalent of Brightness, so `KC.RGB_VAI` and `KC.RGB_VAD` are the keycodes we will use.
@@ -388,8 +388,8 @@ encoder_handler.map = (((KC.RGB_VAD, KC.RGB_VAI, None),),)
 
 ### Answer: Visit RoboCats Website
 
-- We can copy and paste the `EG_COPY = KC.LCTL(KC.C)` line to `URL = KC.LCTL(KC.L)`, which will go to the URL bar in your browser.
-- Similarly, copy and pasting the string example `EG_STRING = send_string("According ...")` to `ROBO_URL = send_string("https://www.melbournerobocats.com/")` will type out the URL.
+- We can modify the `EG_COPY = KC.LCTL(KC.C)` line to `URL = KC.LCTL(KC.L)`, which will move your cursor to the URL bar in your browser.
+- Similarly, editing the string example `EG_STRING = send_string("According ...")` to `ROBO_URL = send_string("https://www.melbournerobocats.com/")` will type out the URL.
 - We then need to add `KC.ENTER` to our keymap so we can press enter after typing out the URL.
 
 ```python
@@ -406,7 +406,7 @@ keyboard.keymap = [
 
 ### Answer: RoboCats Website Single Key
 
-- Using [Key Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#key-sequences) we can press the keys we defined in the last challenge together.
+- Using [Key Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#key-sequences) we can press the keys we defined in the last challenge all in one go.
 - If we enter the keycodes we made in the previous challenge into the example linked above, it will look something like the below.
 - Adding `ROBO_URL_SINGLE` to our keymap will then allow us to trigger this sequence.
 
@@ -435,7 +435,7 @@ keyboard.keymap = [
 - We will use [Key Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#key-sequences) as we did in the previous challenge to solve this.
 - You can either type `1 2 3` using the keycodes, or send them as a string, but will need to type `Liftoff!` as a string.
 - We will press `KC.ENTER` after typing each key, and append a newline to the `Liftoff!` string.
-- Between each step `KC.MACRO_SLEEP_MS(1000)` will be called to create a delay. The function accepts a time in milliseconds (thousands of a second) so we will pass 1000 to get a delay in seconds.
+- Between each step `KC.MACRO_SLEEP_MS(1000)` will be called to create a delay. The function accepts a time in milliseconds (thousandths of a second) so we will pass 1000 to get a one second delay.
 
 ```python
 LIFTOFF = simple_key_sequence(
