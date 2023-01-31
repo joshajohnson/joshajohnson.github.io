@@ -8,7 +8,7 @@ img_path: /assets/2022-08-28-intro-keyboard/
 
 ## Introduction 
 
-Building an DIY keyboard consists of three main sections: soldering, mechanical assembly, and programming. The goal of this workshop is to provide an introduction to the above so you feel confident tackling a larger project of your own.
+Building a DIY keyboard consists of three main sections: soldering, mechanical assembly, and programming. The goal of this workshop is to provide an introduction to the above so you feel confident tackling a larger project of your own.
 
 ![finished product](48_final_product.jpg)
 
@@ -60,9 +60,9 @@ Add solder to the remaining pins to secure the reset switch in place.
 
 ### LEDs
 
-Adding LEDs to your board is a simple way of adding some colour to your desk, but it can also be used to identify the state of your keyboard, e.g. if it's setup for macros or volume control. The LEDs used are known as "addressable LEDs" in that you send a serial sting of data to the LEDs to set their colour. Due to the packaging of addressable LEDs they can be a bit challenging to solder, so don't hesistate to ask for help.
+Adding LEDs to your board is a simple way of adding some colour to your desk, but it can also be used to identify the state of your keyboard, e.g. if it's setup for macros or volume control. The LEDs used are known as "addressable LEDs" in that you send a serial sting of data to the LEDs to set their colour. Due to the packaging of addressable LEDs they can be a bit challenging to solder, so don't hesitate to ask for help.
 
-Simiarly to the reset switch, tin one pad of the LED footprint.
+Similarly to the reset switch, tin one pad of the LED footprint.
 ![tin led pin](4_tin_led.jpg)
 
 Line up the white triangular marking in the corner of the LED with the "L" shaped corner of the marking on the PCB. **This is crucial otherwise your board won't work**.
@@ -128,7 +128,11 @@ Finish soldering all four diodes, and you'll have a board that looks like the be
 
 The microcontroller is the brains of any keyboard, with it scanning for key presses, figuring out what key was pressed, then sending the relavent keypress up to the computer all in a fraction of a second. A RP2040 based board, Sea-Picro, was chosen for this project as it can be programmed in python without installing a toolchain and has good supply even during the chip shortage.
 
-We first need to solder the pin headers to the microcontroller, and can use the PCB to keep the pins aligned as shown below. The pin header is one pin shorter than the IO on Sea-Picro, please leave the empty pin at the USB connector end as shown in red. Solder the pins at the end of each header.
+We first need to solder the pin headers to the microcontroller, and can use the PCB to keep the pins aligned as shown below. 
+
+**The pin header is one pin shorter than the IO on Sea-Picro, please leave the empty pin at the USB connector end as shown in red.** 
+
+With the pin header in the correct position, tack one pin at each end of the header in place.
 ![pin headers](27_solder_headers.png)
 
 With the headers tacked in place, confirm the pins are square to the microcontroller. If they are not, heat up one of the solder joints, and gently push the connector into alignment. Make sure you don't touch the pin you are heating up otherwise you'll burn yourself! 
@@ -137,7 +141,9 @@ With the headers tacked in place, confirm the pins are square to the microcontro
 Once the pins are square solder all of the pins. (sorry for the blurry photo)
 ![solder all pins](30_solder_headers.png)
 
-With all the pins soldered on Sea-Picro, ensure it's placed on the same side as the diodes with the USB connector facing towards the edge of PCB as per the above photo. **ENSURE THIS IS CORRECT OTHERWISE YOUR BOARD WILL NOT WORK**.
+With all the pins soldered on Sea-Picro, ensure it's placed on the same side as the diodes with the USB connector facing towards the edge of PCB as per the above photo. 
+
+**ENSURE THIS IS CORRECT OTHERWISE YOUR BOARD WILL NOT WORK**.
 
 With Sea-Picro oriented correctly, flip the board upside down and tack two opposing corners in place on the PCB.
 ![tack bottom pins](31_solder_headers_bottom.png)
@@ -147,7 +153,7 @@ If Sea-Picro isn't sitting fush to the PCB, heat up a pin and adjust as nessessa
 
 With the microcontroller sitting flush to the PCB, solder the remaining pins. (forgot to photograph this step)
 
-With all the pins soldered, snip off the legs so they don't stick out.
+With all the pins soldered, snip off the legs so they don't stick out. I'd recommend cutting the leads towards the desk so they don't go flying around the room.
 ![trim headers](32_sp_snip_underneath.jpg)
 
 ### Switches
@@ -274,7 +280,9 @@ If you make a change and notice your board is no longer working, there is a good
 - 2 RED blinks: Code ended due to an exception. Check the serial console for details.
 - 3 YELLOW blinks: CircuitPython is in safe mode. No user code was run. Check the serial console for safe mode reason.
 
-To check the serial console for details, you will need a tool like [PuTTY](https://putty.org/), or [Screen](https://linux.die.net/man/1/screen). You can also use [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recomended editor for CircuitPython and has an inbuilt serial terminal.
+To check the serial console for details, you will need a tool like [PuTTY](https://putty.org/), or [Screen](https://linux.die.net/man/1/screen). You can also use [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recommended editor for CircuitPython and has an inbuilt serial terminal.
+
+There are also some "challenge" problems [here](https://joshajohnson.com/robocats-keyboard/#programming-challenges) that I wrote for my FIRST Robotics team if you'd like examples of what is possible with the keyboard.
 
 ## Mechanical Assembly
 
