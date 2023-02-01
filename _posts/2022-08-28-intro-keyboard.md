@@ -148,7 +148,7 @@ With all the pins soldered on Sea-Picro, ensure it's placed on the same side as 
 With Sea-Picro oriented correctly, flip the board upside down and tack two opposing corners in place on the PCB.
 ![tack bottom pins](31_solder_headers_bottom.png)
 
-If Sea-Picro isn't sitting fush to the PCB, heat up a pin and adjust as nessessary.
+If Sea-Picro isn't sitting flush to the PCB, heat up a pin and adjust as necessary.
 ![align pins](31_5_aligning_pins.png)
 
 With the microcontroller sitting flush to the PCB, solder the remaining pins. (forgot to photograph this step)
@@ -158,9 +158,9 @@ With all the pins soldered, snip off the legs so they don't stick out. I'd recom
 
 ### Switches
 
-Switches are argueably the most important part of a keyboard, as without them you wouldn't be able to type anything! They come in a variety of options with different force profiles, but regardless of what switch you pick the install process is the same.
+Switches are arguably the most important part of a keyboard, as without them you wouldn't be able to type anything! They come in a variety of options with different force profiles, but regardless of what switch you pick the install process is the same.
 
-First, grab a switch and place it in the position you want. Rememeber we are fitting a rotary encoder as well so consider where you want that to live as it's much taller than a switch. In this case, I'm installing switches in 1,2,3, and an encoder in 0.
+First, grab a switch and place it in the position you want. Remember we are fitting a rotary encoder as well so consider where you want that to live as it's much taller than a switch. In this case, I'm installing switches in 1,2,3, and an encoder in 0.
 ![place switch](35_insert_switch.jpg)
 
 With the switch pressed into place, flip the board over and solder the pins in. Repeat for the other two switches.
@@ -176,7 +176,7 @@ The first step is to snip both mounting legs off the encoder with the side cutte
 With the legs removed, insert the encoder into the PCB and tack opposing pins in place. Don't solder all the pins yet.
 ![solder two pins](40_tack_pins.jpg)
 
-With the pins tacked into place, ensure the encoder is sitting flush / square on the board, and adjust as nessessary. When square, solder the remaining pins.
+With the pins tacked into place, ensure the encoder is sitting flush / square on the board, and adjust as necessary. When square, solder the remaining pins.
 ![check square](40_5_check_square.jpg)
 
 With all of the encoder pins soldered, install the keycaps and knob, and celebrate finishing the soldering of your new keyboard!
@@ -282,7 +282,7 @@ If you make a change and notice your board is no longer working, there is a good
 
 To check the serial console for details, you will need a tool like [PuTTY](https://putty.org/), or [Screen](https://linux.die.net/man/1/screen). You can also use [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recommended editor for CircuitPython and has an inbuilt serial terminal.
 
-There are also some "challenge" problems [here](https://joshajohnson.com/robocats-keyboard/#programming-challenges) that I wrote for my FIRST Robotics team if you'd like examples of what is possible with the keyboard.
+There are also some "challenge" problems [here](https://joshajohnson.com/robocats-keyboard/#programming-challenges) that I wrote for my FIRST Robotics team if you'd like examples of what is possible with the keyboard.g
 
 ## Mechanical Assembly
 
