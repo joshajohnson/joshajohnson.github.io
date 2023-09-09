@@ -6,7 +6,7 @@ tags: []
 img_path: /assets/2023-09-01-bsidescbr23-workshop/
 ---
 
-# Introduction
+## Introduction
 
 The goal of today's workshop is to design and assemble a printed circuit board (PCB) which takes the form of a magpie with a blinking eye. Once assembled, the add-on will plug into your badge and scare everyone within swooping distance whilst reminding them that [Birds Aren't Real](https://en.wikipedia.org/wiki/Birds_Aren%27t_Real).
 
@@ -14,7 +14,7 @@ The goal of today's workshop is to design and assemble a printed circuit board (
 
 By the end of the workshop you'll have learnt how to design a schematic and layout a PCB using KiCad, along with how to solder through hole and surface mount components.
 
-# Let's Begin!
+### Let's Begin!
 
 Before we dive into designing the PCB, we need to pick a CAD tool to use. Whilst there are online tools such as [Easy EDA](https://easyeda.com/), they are limited in capability due to running in a browser and if you continue to design PCBs after this workshop may run into limitations. As such we will be using [KiCad](https://www.kicad.org/), an extremely powerful and open source EDA tool, which will handle whatever you can throw at it.
 
@@ -22,7 +22,7 @@ If you have not already installed KiCad, please download it from [here](https://
 
 You will also need to download the [library](https://github.com/joshajohnson/sao-workshop/releases/tag/0.1) I have made for this workshop, as it contains custom symbols and most importantly the footprint to make our badge look like a magpie.
 
-## KiCad Project Setup
+### KiCad Project Setup
 
 Prior to starting the design, we need to make a new KiCad project and add the above downloaded library so we can use the symbols and footprints.
 
@@ -47,11 +47,11 @@ Prior to starting the design, we need to make a new KiCad project and add the ab
 
 With the project setup and libraries added, are now ready to draw up the schematic.
 
-# Schematic Capture
+## Schematic Capture
 
 Schematic capture is the first step of the PCB design process, and involves drawing the circuit we want to design and defining what pins connect to each other. During this step we don't have to follow the laws of physics which allows us to rearrange pins, use net labels to connect signals, and split the design across multiple sheets on a big design to draw the design in a way which is easy to read and understand.
 
-## KiCad Schematic Hotkeys Reference
+### KiCad Schematic Hotkeys Reference
 
 | Shortcut | Function           |
 |----------|--------------------|
@@ -60,7 +60,7 @@ Schematic capture is the first step of the PCB design process, and involves draw
 | M        | Move symbol        |
 | R        | Rotate symbol      |
 
-## Functional Description
+### Functional Description
 
 For this workshop we'll be designing an [Astable 555 Timer](https://www.allaboutcircuits.com/tools/555-timer-astable-circuit/), which is a fancy way of toggling a pin (and in turn a LED) on and off forever. A Simplified version of the circuit we will be designing is shown below.
 
@@ -74,7 +74,7 @@ f = sqrt(2)/(C1(R1 + 2R2))
   = 1.5 Hz
 ``````
 
-## Drawing the Schematic
+### Drawing the Schematic
 
 - Press `A` to add a new part, and select the 555 timer from the `sao_workshop` library.
 
@@ -111,7 +111,7 @@ With this done, we've got all the electrical components required to blink a LED.
 
 This concludes placing parts in the schematic, and we can start setting things up for layout.
 
-## Annotation, Electrical Rules Check, Footprint Association
+### Annotation, Electrical Rules Check, Footprint Association
 
 Currently our symbols are abstract objects that don't have unique IDs or footprints associated to them, two things which are required to lay out the PCB.
 
@@ -151,11 +151,11 @@ A given part (e.g. 1K resistor) can come in many different physical form factors
 
 With the footprint association complete, we are ready to continue onto the PCB layout step!
 
-# PCB Layout
+## PCB Layout
 
 During schematic capture we told KiCad how we wanted to connect the components together. In layout, KiCad uses this information to assist us to make the connections whilst ensuring we follow the rules of physics this time. It's like a big game of connect the dots!
 
-## KiCad PCB Hotkeys Reference
+### KiCad PCB Hotkeys Reference
 
 | Shortcut | Function           |
 |----------|--------------------|
@@ -167,7 +167,7 @@ During schematic capture we told KiCad how we wanted to connect the components t
 | H        | Dim inactive layers|
 | ALT + 3  | 3d Viewer          |
 
-## PCB Layers
+### PCB Layers
 
 A PCB consists of a number of layers of varying materials, and KiCad has a layer in the PCB layout tool that corresponds to each. The below are the ones we will be using in this workshop, and you can move between layers by clicking on it's name in the PCB editor.
 
@@ -186,7 +186,7 @@ The below image from [EMSL](https://twitter.com/EMSL/status/1385779310233980931)
 
 ![cross section of a PCB](esml_2_layer.jpeg)
 
-## Import Schematic
+### Import Schematic
 
 Before we can lay out the PCB, we need to import the schematic we defined in the earlier steps.
 
@@ -206,7 +206,7 @@ Before we can lay out the PCB, we need to import the schematic we defined in the
 
 ![parts in pcb editor](parts_in_pcb.png)
 
-## Placing Components
+### Placing Components
 
 With the parts in the PCB editor, we need to place them on the PCB. 
 
@@ -241,7 +241,7 @@ Good component placement (minimal crossing lines).
 
 ![good component placement](good_placement.png)
 
-## Defining Board Outline
+### Defining Board Outline
 
 Normally once you've placed the components on the PCB it's time to define the board outline. However due to the magpie outline being provided this step isn't needed today, but for future board where the outline isn't provided it can be done as below.
 
@@ -252,7 +252,7 @@ Normally once you've placed the components on the PCB it's time to define the bo
 
 ![defining board outline](board_outline.png)
 
-## Routing the PCB
+### Routing the PCB
 
 Routing a PCB involves using copper to connect all of the required nets together so it functions correctly. Most PCBs will have a net called ground which most components connect to, so it's common to dedicate an entire layer of the PCB to ground so make routing easier.
 
@@ -288,7 +288,7 @@ At this point you might find that it's easy to route all but one of the traces. 
 
 ![placing a via](via.png)
 
-## Design Rules Check
+### Design Rules Check
 
 Whilst the PCB layout tool tries to prevent you from making mistakes, they always happen so it's best practice to run Design Rule Checks (DRC) before ordering boards. 
 
@@ -297,7 +297,7 @@ Whilst the PCB layout tool tries to prevent you from making mistakes, they alway
 
 ![running drc](drc_run.png)
 
-## Silkscreen
+### Silkscreen
 
 Now that DRC is clear, you are safe to order your PCBs knowing they'll most likely work. However it's also important for them to look nice, so let's tidy up the silkscreen and add our name first.
 
@@ -316,7 +316,7 @@ Now that DRC is clear, you are safe to order your PCBs knowing they'll most like
 
 ![cleaning up silk](cleanup_silk.png)
 
-## Exporting Gerbers and Ordering PCBs
+### Exporting Gerbers and Ordering PCBs
 
 Now that our PCB is complete, it's time to generate the required files to order our boards!
 
@@ -348,10 +348,10 @@ Once you are happy with the gerbers, they can be zipped up and sent off to your 
 Don't forget to order your components at this time, otherwise you won't be able to assemble the boards once they arrive!
 
 
-# PCB Assembly
+## PCB Assembly
 
-## Surface Mount Components
+### Surface Mount Components
 
-## Though Hole Components
+### Though Hole Components
 
-## Smoke Test
+### Smoke Test
