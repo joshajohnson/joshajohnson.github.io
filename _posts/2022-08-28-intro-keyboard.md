@@ -45,41 +45,6 @@ The most important thing to remember with soldering is that the solder flows to 
 Here is a short video showing how to solder, with the first 15 seconds demoing the above instructions.
 {% include youtube_embed.html id="BsF9A7xBRP0" %}
 
-### Reset Switch
-
-The first step to assembling the board is to solder the reset switch, which is commonly used to put the board into bootloader mode so you can flash different firmware / keymaps to the microcontroller. The board we are using ([Sea-Picro]({% post_url 2022-08-03-sea-picro %})) already has a reset button on it so this step is not required, but is good practice none the less.
-
-First, put a small amount of solder onto one of the pads.
-![tin rst pin](1_tin_rst.jpg)
-
-Then using tweezers, place the reset switch in position and melt the solder you previously placed down to tack the reset switch in place.
-![tack rst in pos](2_tack_rst.jpg)
-
-Add solder to the remaining pins to secure the reset switch in place.
-![solder reset pins](3_solder_rst.jpg)
-
-### LEDs
-
-Adding LEDs to your board is a simple way of adding some colour to your desk, but it can also be used to identify the state of your keyboard, e.g. if it's setup for macros or volume control. The LEDs used are known as "addressable LEDs" in that you send a serial sting of data to the LEDs to set their colour. Due to the packaging of addressable LEDs they can be a bit challenging to solder, so don't hesitate to ask for help.
-
-Similarly to the reset switch, tin one pad of the LED footprint.
-![tin led pin](4_tin_led.jpg)
-
-Line up the white triangular marking in the corner of the LED with the "L" shaped corner of the marking on the PCB. **This is crucial otherwise your board won't work**.
-![check orientation](6_align_led.jpg)
-
-As with the reset switch, heat up the previously placed solder and tack the LED in place.
-![tack led in place](7_tack_led.jpg)
-
-Then solder the remaining pins. You may find the pad with the "L" shaped marking more challenging to solder, and this is due to it being the ground plane which has a large thermal mass. If you get a blob of solder stuck to the LED like below, ensure you hold the iron to the PCB for a few seconds to heat it up before adding solder.
-![poor gnd conn](9_poor_led_joint.jpg)
-
-Here is a video showing the entire process.
-{% include youtube_embed.html id="uSRfHFco2eg" %}
-
-Once you've soldered the first LED, continue doing the other two on the board until they are complete.
-![all leds done](12_all_led_assembled.jpg)
-
 ### Diodes
 
 On a normal keyboard, diodes are used to prevent an effect known as "ghosting", where the microcontroller thinks more keys are pressed than actually are when specific key combinations are pressed. You will see diodes in two different package types, a glass tube with leads (through hole) and a black rectangle with small pads (surface mount). This kit allows you to pick and choose what package you want depending on how challenging you want it to be.
@@ -155,6 +120,45 @@ With the microcontroller sitting flush to the PCB, solder the remaining pins. (f
 
 With all the pins soldered, snip off the legs so they don't stick out. I'd recommend cutting the leads towards the desk so they don't go flying around the room.
 ![trim headers](32_sp_snip_underneath.jpg)
+
+### Reset Switch
+
+Next we will solder the reset switch, which is commonly used to put the board into bootloader mode so you can flash different firmware / keymaps to the microcontroller. The board we are using ([Sea-Picro]({% post_url 2022-08-03-sea-picro %})) already has a reset button on it so this step is not required, but is good practice none the less.
+
+Place the PCB into the 3d printed soldering jig upside down. This was a last minute addition to the workshop so please excuse the bare PCB in the photo.
+![pcb in jig](49_soldering_jig.jpg)
+
+First, put a small amount of solder onto one of the pads.
+![tin rst pin](1_tin_rst.jpg)
+
+Then using tweezers, place the reset switch in position and melt the solder you previously placed down to tack the reset switch in place.
+![tack rst in pos](2_tack_rst.jpg)
+
+Add solder to the remaining pins to secure the reset switch in place.
+![solder reset pins](3_solder_rst.jpg)
+
+### LEDs
+
+Adding LEDs to your board is a simple way of adding some colour to your desk, but it can also be used to identify the state of your keyboard, e.g. if it's setup for macros or volume control. The LEDs used are known as "addressable LEDs" in that you send a serial sting of data to the LEDs to set their colour. Due to the packaging of addressable LEDs they can be a bit challenging to solder, so don't hesitate to ask for help.
+
+Similarly to the reset switch, tin one pad of the LED footprint.
+![tin led pin](4_tin_led.jpg)
+
+Line up the white triangular marking in the corner of the LED with the "L" shaped corner of the marking on the PCB. **This is crucial otherwise your board won't work**.
+![check orientation](6_align_led.jpg)
+
+As with the reset switch, heat up the previously placed solder and tack the LED in place.
+![tack led in place](7_tack_led.jpg)
+
+Then solder the remaining pins. You may find the pad with the "L" shaped marking more challenging to solder, and this is due to it being the ground plane which has a large thermal mass. If you get a blob of solder stuck to the LED like below, ensure you hold the iron to the PCB for a few seconds to heat it up before adding solder.
+![poor gnd conn](9_poor_led_joint.jpg)
+
+Here is a video showing the entire process.
+{% include youtube_embed.html id="uSRfHFco2eg" %}
+
+Once you've soldered the first LED, continue doing the other two on the board until they are complete.
+![all leds done](12_all_led_assembled.jpg)
+
 
 ### Switches
 
@@ -316,5 +320,9 @@ Now it's time to sit back and enjoy all of your hard work, as you've successfull
 
 ## The End
 
-With all the above done, you should have a fully functioning keyboard whose function is only limited by your imagination (and the rules of physics). If you would like to learn more, the KiCad design files for the PCB can be found [on Github](https://github.com/joshajohnson/intro-keyboard), and the schematic can be downloaded [here](https://github.com/joshajohnson/intro-keyboard/releases/download/0.1/intro-keyboard-schematic.pdf). If you have any questions or feedback please let me know, otherwise happy typing!
+With all the above done, you should have a fully functioning keyboard whose function is only limited by your imagination (and the rules of physics). If you would like to learn more, the KiCad design files for the PCB can be found [on Github](https://github.com/joshajohnson/intro-keyboard), and the schematic can be downloaded [here](https://github.com/joshajohnson/intro-keyboard/releases/download/0.1/intro-keyboard-schematic.pdf). 
+
+Caught the soldering bug and want to buy some equipment for use at home? I have a [suggested list here]({% post_url 2023-09-01-soldering-equipment %}). 
+
+If you have any questions or feedback please let me know, otherwise happy typing!
 
