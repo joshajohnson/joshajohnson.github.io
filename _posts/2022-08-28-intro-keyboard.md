@@ -313,7 +313,7 @@ Using a 1.5mm allen key, screw the PCB to the standoffs with the remaining screw
 ![top screw install](46_top_screws.jpg)
 
 Finally, add the bumpons to four corners of the acrylic.
-![add bumpons](47_add_feed.jpg)
+![add bumpons](47_add_feet.jpg)
 
 Now it's time to sit back and enjoy all of your hard work, as you've successfully assembled your new keyboard and can begin programming it.
 ![assembled unit](48_final_product.jpg)
