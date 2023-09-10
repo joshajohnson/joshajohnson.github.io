@@ -37,6 +37,7 @@ You will also require the following tools.
 - Solder
 - Tweezers
 - Flush cut side cutters
+- 1.5mm hex/allen key
 
 ### Soldering Tips
 
@@ -269,13 +270,13 @@ If you have issues, check the diodes are installed in the correct orientation an
 
 Assuming everything is working, it's time to jump to [mechanical assembly](#mechanical-assembly) and attach the base before returning here to configure the keyboard to send whatever keycodes you want. Below are a few links to KMK documentation to help guide you.
 
-- There's a [reference](https://github.com/KMKfw/kmk_firmware/blob/master/docs/keycodes.md#keys-overview) of the available keycodes.
-- [International](https://github.com/KMKfw/kmk_firmware/blob/master/docs/international.md#international-keycodes) extension adds keys for non US layouts and [Media Keys](https://github.com/KMKfw/kmk_firmware/blob/master/docs/media_keys.md#media-keys) adds keys for ... media.
+- There's a [reference](https://github.com/KMKfw/kmk_firmware/blob/master/docs/en/keycodes.md#keys-overview) of the available keycodes.
+- [International](https://github.com/KMKfw/kmk_firmware/blob/master/docs/en/international.md#international-keycodes) extension adds keys for non US layouts and [Media Keys](https://github.com/KMKfw/kmk_firmware/blob/master/docs/en/media_keys.md#media-keys) adds keys for ... media.
 
 And to go even further:
-- [Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/sequences.md#sequences) are used for sending multiple keystrokes in a single action.
-- [Layers](https://github.com/KMKfw/kmk_firmware/blob/master/docs/layers.md#layers) can transform the whole way your keyboard is behaving with a single touch.
-- [ModTap](https://github.com/KMKfw/kmk_firmware/blob/master/docs/modtap.md#modtap-keycodes) allow you to customize the way a key behaves whether it is tapped or hold, and [TapDance](https://github.com/KMKfw/kmk_firmware/blob/master/docs/tapdance.md#tap-dance) depending on the number of times it is pressed.
+- [Sequences](https://github.com/KMKfw/kmk_firmware/blob/master/docs/en/sequences.md#sequences) are used for sending multiple keystrokes in a single action.
+- [Layers](https://github.com/KMKfw/kmk_firmware/blob/master/en/docs/layers.md#layers) can transform the whole way your keyboard is behaving with a single touch.
+- [ModTap](https://github.com/KMKfw/kmk_firmware/blob/master/en/docs/modtap.md#modtap-keycodes) allow you to customize the way a key behaves whether it is tapped or hold, and [TapDance](https://github.com/KMKfw/kmk_firmware/blob/master/en/docs/tapdance.md#tap-dance) depending on the number of times it is pressed.
 
 If you make a change and notice your board is no longer working, there is a good chance there is a bug somewhere that is preventing the code from running. If this is the case, the onboard RGB LED will blink a [error code](https://learn.adafruit.com/welcome-to-circuitpython/troubleshooting#circuitpython-7-dot-0-0-and-later-2978455) that corresponds to the below.
 
@@ -286,7 +287,7 @@ If you make a change and notice your board is no longer working, there is a good
 
 To check the serial console for details, you will need a tool like [PuTTY](https://putty.org/), or [Screen](https://linux.die.net/man/1/screen). You can also use [Mu](https://learn.adafruit.com/welcome-to-circuitpython/installing-mu-editor), which is the recommended editor for CircuitPython and has an inbuilt serial terminal.
 
-There are also some "challenge" problems [here](https://joshajohnson.com/robocats-keyboard/#programming-challenges) that I wrote for my FIRST Robotics team if you'd like examples of what is possible with the keyboard.g
+There are also some "challenge" problems [here](https://joshajohnson.com/robocats-keyboard/#programming-challenges) that I wrote for my FIRST Robotics team if you'd like examples of what is possible with the keyboard.
 
 ## Mechanical Assembly
 
@@ -296,7 +297,6 @@ With the electronics done, it's time to assemble the case. Check you have the be
 - 4 x M2 standoffs
 - 8 x M2 bolts
 - 4 x Bumpons
-- 1.5mm hex/allen key
 
 ![mech parts](42_mech_required.jpg)
 
