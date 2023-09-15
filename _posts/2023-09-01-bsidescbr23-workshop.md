@@ -18,9 +18,9 @@ By the end of the workshop you'll have learnt how to design a schematic and layo
 
 Before we dive into designing the PCB, we need to pick a CAD tool to use. Whilst there are online tools such as [Easy EDA](https://easyeda.com/), they are limited in capability due to running in a browser and if you continue to design PCBs after this workshop may run into limitations. As such we will be using [KiCad](https://www.kicad.org/), an extremely powerful and open source EDA tool, which will handle whatever you can throw at it.
 
-If you have not already installed KiCad, please download it from [here](https://www.kicad.org/download/). We will be using version 7 in this workshop, but if you have version 6 the UI is similar enough you'll be able to follow without issue.
+If you have not already installed KiCad, please download it from [here](https://www.kicad.org/download/). We will be using version 7 in this workshop, if you have an earlier version please update to V7 or proceed at your own peril!
 
-You will also need to download the [library](https://github.com/joshajohnson/sao-workshop/releases/tag/0.1) I have made for this workshop, as it contains custom symbols and most importantly the footprint to make our badge look like a magpie.
+You will also need to download the [library](https://github.com/joshajohnson/sao-workshop/releases/tag/0.1) I have made for this workshop, as it contains custom symbols and most importantly the artwork to make our badge look like a magpie.
 
 ### KiCad Project Setup
 
@@ -62,7 +62,7 @@ Schematic capture is the first step of the PCB design process, and involves draw
 
 ### Functional Description
 
-For this workshop we'll be designing an [Astable 555 Timer](https://www.allaboutcircuits.com/tools/555-timer-astable-circuit/), which is a fancy way of toggling a pin (and in turn a LED) on and off forever. A Simplified version of the circuit we will be designing is shown below.
+For this workshop we'll be designing an [astable 555 timer](https://www.allaboutcircuits.com/tools/555-timer-astable-circuit/), which is a fancy way of toggling a pin (and in turn a LED) on and off forever. A simplified version of the circuit we will be designing is shown below.
 
 ![simplified astable 555 timer circuit](astable-555.png)
 
@@ -75,6 +75,8 @@ f = sqrt(2)/(C1(R1 + 2R2))
 ``````
 
 ### Drawing the Schematic
+
+- Open the schematic editor.
 
 - Press `A` to add a new part, and select the 555 timer from the `sao_workshop` library.
 
@@ -89,7 +91,7 @@ f = sqrt(2)/(C1(R1 + 2R2))
 ![components values added](component_values_added.png)
 
 - With the components placed, we can add the power and ground symbols by pressing `A` then searching for `+3V3` and `GND`. 
-  - "+3V3" and "GND" are magic symbols that put the battery voltage and ground anywhere on the board, and means you don’t have to run a wire to connect power/ground to every point on the schematic.
+  - "+3V3" and "GND" are magic symbols that put the badge voltage and ground anywhere on the board, and means you don’t have to run a wire to connect power/ground to every point on the schematic.
 
 ![adding 3V3 and GND symbols](add_power_ground.png)
 
@@ -149,7 +151,7 @@ A given part (e.g. 1K resistor) can come in many different physical form factors
 
 ![footprint association](fp_assoc.png)
 
-With the footprint association complete, we are ready to continue onto the PCB layout step!
+With the footprint association complete, we are ready to continue onto PCB layout!
 
 ## PCB Layout
 
@@ -162,10 +164,11 @@ During schematic capture we told KiCad how we wanted to connect the components t
 | M        | Move footprint     |
 | X        | Route trace        |
 | V (whilst routing) | Place via|
+| CTRL + SHIFT + V (not routing)| Place via|
 | R        | Rotate footprint   |
 | F        | Flip footprint     |
 | H        | Dim inactive layers|
-| ALT + 3  | 3d Viewer          |
+| ALT + 3  | 3D Viewer          |
 
 ### PCB Layers
 
@@ -190,7 +193,7 @@ The below image from [EMSL](https://twitter.com/EMSL/status/1385779310233980931)
 
 Before we can lay out the PCB, we need to import the schematic we defined in the earlier steps.
 
-- Open the PCB editor (PCBNew)
+- Open the PCB editor (PCBNew).
 
 ![open pcbnew](open_pcb_board_editor.png)
 
@@ -210,7 +213,7 @@ Before we can lay out the PCB, we need to import the schematic we defined in the
 
 With the parts in the PCB editor, we need to place them on the PCB. 
 
-- This design will have all components other than the LED on the back of the board, so select them and press `F` to flip to the back.
+- This design will have all components other than the LED on the back of the board, so select them and press `F` to flip to the back. You'll see their colour turn from red to blue.
 
 ![flipping parts onto the back](parts_on_back.png)
 
@@ -224,14 +227,14 @@ We can now place the LED and connector in their locations, as they are fixed due
 
 ![3d view](magpie_3d_initial.png)
 
-It's now time to place all the electrical components on the PCB. Ideal component placement is a talk all in itself, but the primary goal is to have the fewest number of connection lines (typically called rats nest's for some reason...) crossing as possible, as this will ease our routing step. I encourage you to try this step yourself before scrolling down to copy my solution.
+It's now time to place all the electrical components on the PCB. Ideal component placement is a talk all in itself, but the primary goal is to have the fewest number of connection lines (typically called rats nests for some reason...) crossing as possible, as this will ease our routing step. I encourage you to try this step yourself before scrolling down to copy my solution.
 
 - Select a part and press `M` to move it.
 - With the part selected, press `R` to rotate it.
 - Place the part on the PCB.
 - Repeat for all other components.
 - Keep going in an infinite loop until you are happy that there are as few connection lines as possible crossing.
-- You may want to turn off the F.Silkscreen (click the eye next to the name) so you can see the parts being placed on te PCB easier.
+- You may want to turn off the F.Silkscreen (click the eye next to the name) so you can see the parts being placed on the PCB easier.
 
 Poor component placement (lots of crossing lines).
 
@@ -243,7 +246,7 @@ Good component placement (minimal crossing lines).
 
 ### Defining Board Outline
 
-Normally once you've placed the components on the PCB it's time to define the board outline. However due to the magpie outline being provided this step isn't needed today, but for future board where the outline isn't provided it can be done as below.
+Normally once you've placed the components on the PCB it's time to define the board outline. However due to the magpie outline being provided this step isn't needed today, but for future boards where the outline isn't provided it can be done as below.
 
 - Select the layer "Edge.Cuts".
 - Grab the line tool.
@@ -292,7 +295,7 @@ At this point you might find that it's easy to route all but one of the traces. 
 
 Whilst the PCB layout tool tries to prevent you from making mistakes, they always happen so it's best practice to run Design Rule Checks (DRC) before ordering boards. 
 
-- Run DRC, and check there are not any errors. If so fix them and run DRC until they are all clear.
+- Run DRC, and check there for errors. If there are errors, fix them and run DRC until they are all clear.
 - Due to the artwork on the badge, it's normal to get a warning about "Silkscreen clipped my solder mask" due to the location of the SAO connector.
 
 ![running drc](drc_run.png)
@@ -354,7 +357,7 @@ Once your PCBs and parts have arrived, it's time to assemble the boards! As our 
 
 ### Surface Mount Components
 
-Regardless of what SMD (surface mount device) you are soldering, the process is the same:
+Regardless of what SMD (surface mount device) part you are soldering, the process is the same:
 
 - Tin one pad of the PCB.
 - Grab the part with your tweezers.
@@ -433,3 +436,7 @@ With all the soldering done, plug the add-on into your badge and enjoy the blink
 If the LED doesn't blink, check the LED and 555 timer polarity, along with the solder joints.
 
 ![magpie done](magpie_blinks.png)
+
+Caught the soldering bug and want to buy some equipment for use at home? I have a [suggested list here]({% post_url 2023-09-01-soldering-equipment %}). 
+
+If you have any questions or feedback please let me know, otherwise thanks for attending the workshop and happy PCB designing!
