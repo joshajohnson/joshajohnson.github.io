@@ -350,8 +350,86 @@ Don't forget to order your components at this time, otherwise you won't be able 
 
 ## PCB Assembly
 
+Once your PCBs and parts have arrived, it's time to assemble the boards! As our board has both surface mount and through hole components, we'll solder the surface mount components first, followed by the through hole parts.
+
 ### Surface Mount Components
+
+Regardless of what SMD (surface mount device) you are soldering, the process is the same:
+
+- Tin one pad of the PCB.
+- Grab the part with your tweezers.
+- Melt the solder you just put down.
+- Place the part in the now molten solder and remove your iron.
+- Once the part has cooled down, let go of it.
+- Solder any remaining pads.
+
+The below video shows this process.
+
+{% include youtube_embed.html id="-6xxwgFX74M" %}
+
+- Solder R1 (1K), R2 (470K), and R3 (330R) using the above process. Rotation / polarity does not matter.
+
+![badge with resistors soldered](res_soldered.png)
+
+- Solder U1 (555), ensuring the bar is facing the 555 text.
+
+![555 timer pin 1](555_pin1.png)
+
+- Tack one pin in place.
+
+![tacking 555 in place](555_tack.png)
+
+- Solder the remaining pins.
+
+![555 timer soldered](555_all_pins.png)
+
+- Solder C1 (1u).
+
+![All SMD parts soldered](smd_done.png)
+
+With that, all the surface mount parts are done!
 
 ### Though Hole Components
 
+The LED is the next part to be soldered, and is polarised so rotation is important!
+There are two ways to orient the LED correctly:
+
+- Line the flat side of the LED up with the flat side of the silkscreen.
+
+![led flat side](led_flat.png)
+
+- Line the long led of the LED up with the circular hole.
+
+![led long leg](led_legs.png)
+
+- Insert the LED, flip over the PCB, and bend the LEDs so the LED stays in place. Solder the LED.
+
+![soldering led](solder_led.png)
+
+- Trim the leads, ensuring you cut towards the table as the legs will go flying!
+
+![trim leads](trim_leads.png)
+
+- Orient the IDC connector so the cutout is lined up with the arrow.
+
+![idc orientation](idc_orientation.png)
+
+- Solder one pin of the IDC connector.
+
+![solder idc](solder_idc.png)
+ 
+- Check the IDC connector is flush with the PCB.
+
+![check idc flush](check_flush.png)
+
+- Solder the remaining pins (not shown).
+
+- Finally, solder the mating connector to your badge just as you did with the IDC connector (not shown).
+
 ### Smoke Test
+
+With all the soldering done, plug the add-on into your badge and enjoy the blinking LED!
+
+If the LED doesn't blink, check the LED and 555 timer polarity, along with the solder joints.
+
+![magpie done](magpie_blinks.png)
