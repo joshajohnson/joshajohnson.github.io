@@ -8,6 +8,8 @@ img_path: /assets/2023-09-01-digital-explorer-board/
 
 On your bPod, you'll find a tools menu which provides a way to interface with a number of common embedded protocols. The [digital explorer board](https://github.com/joshajohnson/digital-explorer) in combination with a logic analyser provides a way to see what these signals look like, and hopefully provide a greater understanding of the protocols used in modern electronics.
 
+![conneted to la and bpod](all_connected.JPG)
+
 ## Setup
 
 ### Connecting the Digital Explorer Board
@@ -22,7 +24,7 @@ Before connecting the logic analyser, we need to install [Pulseview](https://sig
 
 Sparkfun has a [great document](https://learn.sparkfun.com/tutorials/using-the-usb-logic-analyzer-with-sigrok-pulseview/all) on how to setup the software to work with your logic analyser.
 
-To connect the logic analyser to the Digital Explorer Board, we need to plug in the interceptor board, which acts as a passthrough between bPod and the Digital Explorer Board, whilst providing a pinout to plug the logic analyser into. When connecting the logic analyser, ensure the USB port is pointing in the same direction as the prot ont the Digital Explorer Board, as otherwise smoke may escape from your PC!
+To connect the logic analyser to the Digital Explorer Board, we need to plug in the interceptor board, which acts as a passthrough between bPod and the Digital Explorer Board, whilst providing a pinout to plug the logic analyser into. When connecting the logic analyser, ensure the USB port is pointing in the same direction as the port on the Digital Explorer Board, as otherwise smoke may escape from your PC!
 
 __Ensure you set the sample rate to at least 1MHz, otherwise the sample speed will be too slow to detect some of the signals!__
 
@@ -30,11 +32,15 @@ __Ensure you set the sample rate to at least 1MHz, otherwise the sample speed wi
 
 bPod plugs into the interceptor board upside down, as shown in the below image. You'll notice the interceptor board has one fewer pin than bPod, this is to prevent smoke if plugged in the wrong way.
 
+![bpod conneted to la](bpod_mate.JPG)
+
 For reasons I can't tell you (cough cough CTF) plugging bPod into the board will cause I2C issues with the MCP23017, so you'll need to comment that code out (or put the RP2040 into bootloader by holding the BOOT button on the Pico and pressing the reset button) depending on what you want to do.
 
 ## Tour of the Digital Explorer Board
 
 The digital explorer board contains a number of common ICs found in modern electronics. They are summarised below:
+
+![render of bpod](board_render.png)
 
 | Part Number | Type                                                | Comms Protocol | Datasheet                                                                                                                      |   |
 |-------------|-----------------------------------------------------|----------------|--------------------------------------------------------------------------------------------------------------------------------|---|
@@ -241,4 +247,24 @@ From the logic analyser, you should also be able to decode this message.
 
 ![uart hello world](uart_hello_world.png)
 
+
+### Controlling MCP23017 from bPod
+
+__Connect bPod for this demo, however you'll have to comment out all the MCP23017 code otherwise it won't run (lines 24-57, 179-182)__
+
+bPod has the ability to control the MCP23017 IO expander just like we do on the digital explorer board.
+
+- Go to tools, and run `i2csniff` to check the address of your MCP23017. I'll be in the range of `0x20 - 0x27`.
+- Then go to the `MCP23017` tab, set the address to the above.
+- Toggle `IOB0 - IOB3`, and you should see the LEDs toggle on and off.
+
+
 ### Controlling WS2812B Addressable LEDs
+
+__Do NOT have bPod connected for this demo__
+
+![la connected to ws2812b](led_la_conn.JPG)
+
+WS2812B's take a serial stream of packets into the first LED, and pass on packets 2...n to the next LED. This can be seen in the below stream, where three bytes make it to the first LED, two to the second LED, and one to the third (last) LED in the stream.
+
+![ws2812](ws2812.png)
