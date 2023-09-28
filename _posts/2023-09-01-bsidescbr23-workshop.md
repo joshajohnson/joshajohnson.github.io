@@ -217,7 +217,11 @@ With the parts in the PCB editor, we need to place them on the PCB.
 
 ![flipping parts onto the back](parts_on_back.png)
 
-We can now place the LED and connector in their locations, as they are fixed due to the mechanical design. 
+We can now place the LED and connector in their locations, as they are fixed due to the mechanical design.
+
+- First adjust the grid size to 0.1mm, as the 2.54mm KiCad ships with by default is too large.
+
+![changing grid size](change_grid.png)
 
 - Select the part, press `M` and move to the below locations.  Press `R` whilst moving to rotate.
 
