@@ -264,6 +264,7 @@ Normally once you've placed the components on the PCB it's time to define the bo
 Routing a PCB involves using copper to connect all of the required nets together so it functions correctly. Most PCBs will have a net called ground which most components connect to, so it's common to dedicate an entire layer of the PCB to ground so make routing easier.
 
 - Select F.Cu, click the "Add a filled zone" tool.
+- Click anywhere on the PCB to open the menu.
 - When you get to the popup screen, select both F.Cu and B.Cu, and net as GND.
 
 ![selecting nets](polygon_pour.png)
